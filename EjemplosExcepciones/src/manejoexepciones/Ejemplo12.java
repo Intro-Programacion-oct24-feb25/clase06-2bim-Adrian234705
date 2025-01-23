@@ -15,25 +15,31 @@ import java.util.Scanner;
 public class Ejemplo12 {
 
     public static void main(String[] args) {
-        try {
-            Scanner entrada = new Scanner(System.in);
+       try {
+           Scanner entrada = new Scanner(System.in);
 
-            System.out.println("Ingrese las operaciones a realizar");
+            System.out.println("Ingrese las operaciones que quiere realizar");
             int valor = entrada.nextInt();
             int[] resultados = new int[valor];
+            String cadena = "Resultado de las operaciones\n";
             for (int i = 0; i < resultados.length; i++) {
+                System.out.println("Division #" + (i + 1));
                 System.out.println("Ingrese el dividendo");
                 int dividendo = entrada.nextInt();
                 System.out.println("Ingrese el divisor");
                 int divisor = entrada.nextInt();
                 resultados[i] = dividendo / divisor;
             }
+            for (int i = 0; i < resultados.length; i++) {
+                cadena = String.format(cadena + "\nDivision #" + (i+1) +"\n"+ resultados[i]);
+            }
+
         } catch (ArithmeticException e) {
             System.out.printf("(ArithmeticException) Ocurrió una "
                     + "excepción %s\n", e);
         } catch (InputMismatchException e) {
             System.out.printf("(InputMismatchException) Ocurrió una "
-                    + "excepción %s:\n Ingreso un dato de tipo cadena.", e);
+                    + "excepción %s:\n Ingreso un dato que no corresponde.", e);
         } catch (Exception e) {
             System.out.printf("Ocurrió una excepción %s\n", e);
         }
