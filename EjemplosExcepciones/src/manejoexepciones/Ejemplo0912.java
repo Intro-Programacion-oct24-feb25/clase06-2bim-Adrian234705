@@ -16,32 +16,25 @@ public class Ejemplo0912 {
 
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        String pais; 
-        boolean bandera = true; 
-        String paises; 
-        
+        boolean bandera = true;
+        while (bandera) {
+            try {
+                System.out.println("Ingrese el pais que desea ");
+                String pais = entrada.nextLine();
+                pais = pais.toLowerCase();
+                
+                if (pais.startsWith("a") || pais.startsWith("e") || pais.startsWith("i")
+                        || pais.startsWith("o")|| pais.startsWith("u")) {
+                    
+                    throw new Exception("Pais Incorrecto intente de nuevo "
+                            + "deberia iniciar con una consonante");
+                }
+                bandera = false;
 
-        try {
-            while (bandera) {
-                System.out.println("Ingrese el pais que desee: ");
-                paises = entrada.nextLine();
-                
-                char letra = paises.charAt(0); 
-                if (letra == 'a'|| letra == 'e' || letra == 'i'|| letra== 'o' || letra == 'u'){
-                    
-                    System.out.println("El primer caracter es una vocal ingrese mas paises"); 
-                }else{
-                    
-                    throw new Exception ("El primer caracter no es una vocal intentalo de nuevo"); 
-                    
-                } 
-                
+            } catch (Exception a) {
+                System.out.printf("Ocurrio una exepcion %s\n", a);
 
             }
-            
-        }catch (Exception e){ 
-            System.out.printf("Error intentelo de nuevo: %s\n", e.getMessage()); 
-            
 
         }
     }
